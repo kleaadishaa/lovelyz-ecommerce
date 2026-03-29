@@ -1,21 +1,21 @@
-# lovelyz-ecommerce
+## lovelyz-ecommerce
 Full-stack skincare e-commerce app built with PHP, MySQL &amp; JavaScript — featuring a shopping cart, order management, and membership system.
 
 ⚙️ Features
-1) Product Catalog
+1) ## Product Catalog
 
 Products are stored in MySQL and displayed dynamically by category
 Categories include: Foam/Gel/Cream/Milk/Oil Cleansers, Micellar Water, Toners, Serums, Essences, Suncreams, Sleeping/Sheet/Clay/Peel-off Masks
 Out-of-stock products are visually marked and buttons disabled
 
-2) Shopping Cart
+2) ## Shopping Cart
 
 Cart is stored in localStorage — no login required
 Add, remove, increase/decrease quantity per product
 Stock limit enforced on both frontend and backend
 Cart badge updates dynamically in the header
 
-3) Order System
+3) ## Order System
 
 On checkout, cart is sent via POST to save_order.php
 A MySQL transaction handles:
@@ -28,13 +28,13 @@ Rolling back everything if stock is insufficient
 
 Order is marked completed after payment confirmation
 
-4) Membership / Subscription
+4) ## Membership / Subscription
 
 Users can subscribe via a form to receive discounts and updates
 Data is validated (required fields, email format, duplicate check)
 Stored in the subscribers table
 
-5) Database Schema
+5) ## Database Schema
 -- Products
 products (
     id          INT PRIMARY KEY AUTO_INCREMENT,
@@ -73,12 +73,8 @@ subscribers (
     phone     VARCHAR(50),
     email     VARCHAR(255) UNIQUE
 )
-```
 
----
-
-## 🔄 Purchase Flow
-```
+## Purchase Flow
 User adds products → localStorage (cart)
         ↓
 "Proceed to Checkout" → POST save_order.php
