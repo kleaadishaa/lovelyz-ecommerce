@@ -1,0 +1,16 @@
+# Database credentials
+includes/db.php
+
+# PHP error logs
+*.log
+error_log
+
+# OS files (Mac)
+.DS_Store
+
+# OS files (Windows)
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
