@@ -75,7 +75,7 @@ subscribers (
 )
 
 ## Purchase Flow
-User adds products → localStorage (cart) -> "Proceed to Checkout" → POST save_order.php → Creates order + order_details in DB → Deducts stock -> Redirects to checkout.html -> 
+User adds products → localStorage (cart) -> "Proceed to Checkout" → POST save_order.php → Creates order + order_details in DB → Deducts stock -> Redirects to checkout.html
 -> GET checkout.php → displays items + total -> "Pay Now" → POST checkout.php → Marks order as completed -> localStorage cleared → redirects to success.html
 
 ## 🚀 Setup
@@ -94,4 +94,4 @@ User adds products → localStorage (cart) -> "Proceed to Checkout" → POST sav
    Use XAMPP or WAMP and place the project in the htdocs folder.
 
 5. Open in browser
-   http://localhost/lovelyz-skincare/
+   http://localhost/SkinCare/index.php
