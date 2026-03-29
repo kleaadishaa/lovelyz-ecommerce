@@ -75,20 +75,8 @@ subscribers (
 )
 
 ## Purchase Flow
-User adds products → localStorage (cart)
-        ↓
-"Proceed to Checkout" → POST save_order.php
-        → Creates order + order_details in DB
-        → Deducts stock
-        ↓
-Redirects to checkout.html
-        ↓
-GET checkout.php → displays items + total
-        ↓
-"Pay Now" → POST checkout.php
-        → Marks order as completed
-        ↓
-localStorage cleared → redirects to success.html
+User adds products → localStorage (cart) -> "Proceed to Checkout" → POST save_order.php → Creates order + order_details in DB → Deducts stock -> Redirects to checkout.html -> 
+-> GET checkout.php → displays items + total -> "Pay Now" → POST checkout.php → Marks order as completed -> localStorage cleared → redirects to success.html
 
 ## 🚀 Setup
 
