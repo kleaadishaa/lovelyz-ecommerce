@@ -15,13 +15,13 @@ $sessionId = session_id();
 $conn->begin_transaction();
 
 try {
-    // 1️⃣ Calculate total price
+    // Calculate total price
     $totalPrice = 0;
     foreach ($input['cart'] as $item) {
         $totalPrice += floatval($item['price']) * intval($item['quantity']);
     }
 
-    // 2️⃣ Remove any previous pending order for this session
+    // Remove any previous pending order for this session
     $delDetails = $conn->prepare("
         DELETE od 
         FROM order_details od
@@ -37,7 +37,7 @@ try {
     $delOrder->execute();
     $delOrder->close();
 
-    // 3️⃣ Insert new order
+    // Insert new order
     $stmtOrder = $conn->prepare("
         INSERT INTO orders (session_id, status, total_price, created_at) 
         VALUES (?, 'pending', ?, NOW())
@@ -47,13 +47,13 @@ try {
     $orderId = $stmtOrder->insert_id;
     $stmtOrder->close();
 
-    // 4️⃣ Prepare order_details insert
+    //  Prepare order_details insert
     $stmtDetails = $conn->prepare("
         INSERT INTO order_details (order_id, product_id, product_name, price, quantity)
         VALUES (?, ?, ?, ?, ?)
     ");
 
-    // 5️⃣ Prepare stock update
+    //  Prepare stock update
     $updateStock = $conn->prepare("
         UPDATE products SET in_stock = in_stock - ? 
         WHERE id = ? AND in_stock >= ?
@@ -90,9 +90,3 @@ try {
 }
 
 $conn->close();
-/*
-Orders table now only stores session_id, total_price, status.
-Order details table stores each product line: order_id, product_id, product_name, price, quantity.
-Previous pending orders are cleared for the session.
-Stock is deducted per product.
-Total price is calculated and stored in orders. */
